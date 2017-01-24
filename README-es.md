@@ -14,32 +14,31 @@
   10. [Comentarios](#comments)
   11. [Traducciones](#translation)
 
-## Introduction
-![Humorous image of software quality estimation as a count of how many expletives
-you shout when reading code](http://www.osnews.com/images/comics/wtfm.jpg)
+## Introducción
+![Imagen humoristica sobre la estimación de la calidad del software medido como 
+el conteo de las groserias que dices mientras lees el código](http://www.osnews.com/images/comics/wtfm.jpg)
 
-Software engineering principles, from Robert C. Martin's book
-[*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
-adapted for JavaScript. This is not a style guide. It's a guide to producing
-readable, reusable, and refactorable software in JavaScript.
+Principios de la ingeniería de software del libro 
+[*Clean Code*] (https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) 
+de Robert C. Martin adaptados para JavaScript. Esta no es un guía de estilos sino una guía para
+producir código Javascript que sea fácil de leer, reutilizable y refactorizable.
 
-Not every principle herein has to be strictly followed, and even fewer will be
-universally agreed upon. These are guidelines and nothing more, but they are
-ones codified over many years of collective experience by the authors of
-*Clean Code*.
+No es necesario que todos los principios de esta guía sean seguidos de forma estricta, e incluso 
+muchos de ellos ni siquiera son aceptados universalmente.
+Son solamente directrices y nada más, pero es importante notar que son sugerencias que han sido
+recolectadas a través de muchos años de experiencia colectiva por los autores de *Clean Code*
 
-Our craft of software engineering is just a bit over 50 years old, and we are
-still learning a lot. When software architecture is as old as architecture
-itself, maybe then we will have harder rules to follow. For now, let these
-guidelines serve as a touchstone by which to assess the quality of the
-JavaScript code that you and your team produce.
+Nuestra labor como ingenieros de software solamente ha existido un poco más de 50 años, y aún
+seguimos aprendiendo muchas cosas. Cuando la arquitectura de software sea tan antigua como la 
+arquitectura como tal, tal vez en ese momento tendremos reglas más establecidas las cuales podamos 
+seguir. Por el momento, dejemos que estas directrices sirvan como punto de referencia con el cual 
+tú o tú equipo puedan juzgar la calidad del código Javascript que producen.
 
-One more thing: knowing these won't immediately make you a better software
-developer, and working with them for many years doesn't mean you won't make
-mistakes. Every piece of code starts as a first draft, like wet clay getting
-shaped into its final form. Finally, we chisel away the imperfections when
-we review it with our peers. Don't beat yourself up for first drafts that need
-improvement. Beat up the code instead!
+Una cosa más: debes estar consciente que estas sugerencias no te convertirán inmediatamente en 
+un mejor desarrollador, o que trabajar con ellas no significa que no volverás a cometer ningún error. 
+Cada pieza de código inicia como un primer borrador, como la arcilla húmeda lista para tomar su forma final.
+Por último, removemos las imperfecciones cuando revisamos el código junto con nuestros pares. No te preocupes
+por los primeros borradores de tu código que necesitan mejorar ya que eventualmente va a mejorar.
 
 ## **Variables**
 ### Use meaningful and pronounceable variable names
