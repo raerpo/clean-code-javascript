@@ -41,59 +41,58 @@ Por último, removemos las imperfecciones cuando revisamos el código junto con 
 por los primeros borradores de tu código que necesitan mejorar ya que eventualmente va a mejorar.
 
 ## **Variables**
-### Use meaningful and pronounceable variable names
+### Usa nombres de variables con sentido y pronunciables
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 const yyyymmdstr = moment().format('YYYY/MM/DD');
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 const currentDate = moment().format('YYYY/MM/DD');
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
-### Use the same vocabulary for the same type of variable
+### Sé consistente con el nombre de las variables del mismo tipo
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 getUserInfo();
 getClientData();
 getCustomerRecord();
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 getUser();
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Use searchable names
-We will read more code than we will ever write. It's important that the code we
-do write is readable and searchable. By *not* naming variables that end up
-being meaningful for understanding our program, we hurt our readers.
-Make your names searchable. Tools like
-[buddy.js](https://github.com/danielstjules/buddy.js) and
-[ESLint](https://github.com/eslint/eslint/blob/660e0918933e6e7fede26bc675a0763a6b357c94/docs/rules/no-magic-numbers.md)
-can help identify unnamed constants.
+Siempre vamos a leer más código de que escribiremos. Es por esto que es importante
+que el código que escribimos sea de fácil lectura y que podamos buscar en el. Al *no* 
+nombrar variables que ayuden a darle sentido a nuestro programa, hacemos daño a nuestros lectores.
+Haz que el nombre de las variables se puedan encontrar. Herramientas como [buddy.js](https://github.com/danielstjules/buddy.js) and
+[ESLint](https://github.com/eslint/eslint/blob/660e0918933e6e7fede26bc675a0763a6b357c94/docs/rules/no-magic-numbers.md) pueden ayudar
+a identificar constantes sin nombre.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
-// What the heck is 86400000 for?
+// ¿Que significa el 86400000?
 setTimeout(blastOff, 86400000);
 
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
-// Declare them as capitalized `const` globals.
+// Declaralas como constantes `const` globales.
 const MILLISECONDS_IN_A_DAY = 86400000;
 
 setTimeout(blastOff, MILLISECONDS_IN_A_DAY);
 
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Use explanatory variables
 **Bad:**
@@ -110,7 +109,7 @@ const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 const [, city, zipCode] = address.match(cityZipCodeRegex) || [];
 saveCityZipCode(city, zipCode);
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Avoid Mental Mapping
 Explicit is better than implicit.
@@ -141,7 +140,7 @@ locations.forEach((location) => {
   dispatch(location);
 });
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Don't add unneeded context
 If your class/object name tells you something, don't repeat that in your
@@ -172,7 +171,7 @@ function paintCar(car) {
   car.color = 'Red';
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Use default arguments instead of short circuiting or conditionals
 
@@ -192,7 +191,7 @@ function createMicrobrewery(breweryName = 'Hipster Brew Co.') {
 }
 
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ## **Functions**
 ### Function arguments (2 or fewer ideally)
@@ -243,7 +242,7 @@ createMenu({
   cancellable: true
 });
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 
 ### Functions should do one thing
@@ -278,7 +277,7 @@ function isClientActive(client) {
   return clientRecord.isActive();
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Function names should say what they do
 
@@ -303,7 +302,7 @@ function addMonthToDate(month, date) {
 const date = new Date();
 addMonthToDate(1, date);
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Functions should only be one level of abstraction
 When you have more than one level of abstraction your function is usually
@@ -371,7 +370,7 @@ function parseBetterJSAlternative(code) {
   });
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Remove duplicate code
 Do your absolute best to avoid duplicate code. Duplicate code is bad because it
@@ -451,7 +450,7 @@ function showList(employees) {
   });
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Set default objects with Object.assign
 
@@ -497,7 +496,7 @@ function createMenu(config) {
 
 createMenu(menuConfig);
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 
 ### Don't use flags as function parameters
@@ -524,7 +523,7 @@ function createTempFile(name) {
   createFile(`./temp/${name}`);
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Avoid Side Effects (part 1)
 A function produces a side effect if it does anything other than take a value in
@@ -569,7 +568,7 @@ const newName = splitIntoFirstAndLastName(name);
 console.log(name); // 'Ryan McDermott';
 console.log(newName); // ['Ryan', 'McDermott'];
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Avoid Side Effects (part 2)
 In JavaScript, primitives are passed by value and objects/arrays are passed by
@@ -618,7 +617,7 @@ const addItemToCart = (cart, item) => {
 };
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Don't write to global functions
 Polluting globals is a bad practice in JavaScript because you could clash with another
@@ -648,7 +647,7 @@ class SuperArray extends Array {
   }
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Favor functional programming over imperative programming
 JavaScript isn't a functional language in the way that Haskell is, but it has
@@ -704,7 +703,7 @@ const totalOutput = programmerOutput
   .map((programmer) => programmer.linesOfCode)
   .reduce((acc, linesOfCode) => acc + linesOfCode, INITIAL_VALUE);
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Encapsulate conditionals
 
@@ -725,7 +724,7 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
   // ...
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Avoid negative conditionals
 
@@ -750,7 +749,7 @@ if (isDOMNodePresent(node)) {
   // ...
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Avoid conditionals
 This seems like an impossible task. Upon first hearing this, most people say,
@@ -806,7 +805,7 @@ class Cessna extends Airplane {
   }
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Avoid type-checking (part 1)
 JavaScript is untyped, which means your functions can take any type of argument.
@@ -831,7 +830,7 @@ function travelToTexas(vehicle) {
   vehicle.move(this.currentLocation, new Location('texas'));
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Avoid type-checking (part 2)
 If you are working with basic primitive values like strings, integers, and arrays,
@@ -862,7 +861,7 @@ function combine(val1, val2) {
   return val1 + val2;
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Don't over-optimize
 Modern browsers do a lot of optimization under-the-hood at runtime. A lot of
@@ -887,7 +886,7 @@ for (let i = 0; i < list.length; i++) {
   // ...
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Remove dead code
 Dead code is just as bad as duplicate code. There's no reason to keep it in
@@ -918,7 +917,7 @@ function newRequestModule(url) {
 const req = newRequestModule;
 inventoryTracker('apples', req, 'www.inventory-awesome.io');
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ## **Objects and Data Structures**
 ### Use getters and setters
@@ -984,7 +983,7 @@ bankAccount.balance -= shoesPrice;
 let balance = bankAccount.balance;
 
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 
 ### Make objects have private members
@@ -1020,7 +1019,7 @@ console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 delete employee.name;
 console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 
 ## **Classes**
@@ -1079,7 +1078,7 @@ class UserSettings {
   }
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Open/Closed Principle (OCP)
 As stated by Bertrand Meyer, "software entities (classes, modules, functions,
@@ -1166,7 +1165,7 @@ class HttpRequester {
   }
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 
 ### Liskov Substitution Principle (LSP)
@@ -1303,7 +1302,7 @@ function renderLargeShapes(shapes) {
 const shapes = [new Rectangle(), new Rectangle(), new Square()];
 renderLargeShapes(shapes);
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Interface Segregation Principle (ISP)
 JavaScript doesn't have interfaces so this principle doesn't apply as strictly
@@ -1377,7 +1376,7 @@ const $ = new DOMTraverser({
   }
 });
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Dependency Inversion Principle (DIP)
 This principle states two essential things:
@@ -1472,7 +1471,7 @@ class InventoryRequesterV2 {
 const inventoryTracker = new InventoryTracker(['apples', 'bananas'], new InventoryRequesterV2());
 inventoryTracker.requestItems();
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Prefer ES2015/ES6 classes over ES5 plain functions
 It's very difficult to get readable class inheritance, construction, and method
@@ -1547,7 +1546,7 @@ class Human extends Mammal {
   speak() { /* ... */ }
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 
 ### Use method chaining
@@ -1630,7 +1629,7 @@ const car = new Car()
   .setModel('F-150')
   .save();
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Prefer composition over inheritance
 As stated famously in [*Design Patterns*](https://en.wikipedia.org/wiki/Design_Patterns) by the Gang of Four,
@@ -1696,7 +1695,7 @@ class Employee {
   // ...
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ## **Testing**
 Testing is more important than shipping. If you have no tests or an
@@ -1764,7 +1763,7 @@ describe('MakeMomentJSGreatAgain', () => {
   });
 });
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ## **Concurrency**
 ### Use Promises, not callbacks
@@ -1803,7 +1802,7 @@ require('request-promise').get('https://en.wikipedia.org/wiki/Robert_Cecil_Marti
   });
 
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Async/Await are even cleaner than Promises
 Promises are a very clean alternative to callbacks, but ES2017/ES8 brings async and await
@@ -1839,7 +1838,7 @@ async function getCleanCodeArticle() {
   }
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 
 ## **Error Handling**
@@ -1912,7 +1911,7 @@ getdata()
 });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 
 ## **Formatting**
@@ -1959,7 +1958,7 @@ function restoreDatabase() {}
 class Animal {}
 class Alpaca {}
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 
 ### Function callers and callees should be close
@@ -2045,7 +2044,7 @@ const review = new PerformanceReview(employee);
 review.perfReview();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ## **Comments**
 ### Only comment things that have business logic complexity.
@@ -2089,7 +2088,7 @@ function hashIt(data) {
 }
 
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Don't leave commented out code in your codebase
 Version control exists for a reason. Leave old code in your history.
@@ -2106,7 +2105,7 @@ doStuff();
 ```javascript
 doStuff();
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Don't have journal comments
 Remember, use version control! There's no need for dead code, commented code,
@@ -2131,7 +2130,7 @@ function combine(a, b) {
   return a + b;
 }
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ### Avoid positional markers
 They usually just add noise. Let the functions and variable names along with the
@@ -2166,7 +2165,7 @@ const actions = function() {
   // ...
 };
 ```
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
 
 ## Translation
 
@@ -2179,4 +2178,4 @@ This is also available in other languages:
   - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [BoryaMogila/clean-code-javascript-ru/](https://github.com/BoryaMogila/clean-code-javascript-ru/)
 
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ volver arriba](#table-of-contents)**
