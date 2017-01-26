@@ -192,28 +192,26 @@ function createMicrobrewery(breweryName = 'Hipster Brew Co.') {
 ```
 **[⬆ volver arriba](#indice)**
 
-## **Functions**
-### Function arguments (2 or fewer ideally)
-Limiting the amount of function parameters is incredibly important because it
-makes testing your function easier. Having more than three leads to a
-combinatorial explosion where you have to test tons of different cases with
-each separate argument.
+## **Funciones**
+### Argumentos de las funciones (idealmente 2 o menos)
+Limitar la cantidad de parametros en las funciones es muy importante ya que facilita
+la realización de pruebas. Tener mas de tres se convierte en una combinación explosiva
+donde se tienen que probar muchas combinaciones para cada argumento por separado.
 
-One or two arguments is the ideal case, and three should be avoided if possible.
-Anything more than that should be consolidated. Usually, if you have
-more than two arguments then your function is trying to do too much. In cases
-where it's not, most of the time a higher-level object will suffice as an
-argument.
+Uno o dos argumentos son el caso ideal, y tres deben ser evitados si es posible.
+Cualquier caso por encima de 3 deberia ser consolidado. Usualmente, si la función tiene 
+mas de dos argumentos significa que que la función esta tratando de hacer demasiado. En 
+los casos donde no se cumple lo anterior, la mayoria del tiempo un objeto cumpliría como 
+un solo argumento.
 
-Since JavaScript allows you to make objects on the fly, without a lot of class
-boilerplate, you can use an object if you are finding yourself needing a
-lot of arguments.
+Como Javascript permite crear objetos en tiempo de ejecución, sin necesidad de código 
+innecesario, se puede usar un objeto si se encuentra la necesidad de muchos argumentos.
 
-To make it obvious what properties the function expects, you can use the es6
-destructuring syntax. This has a few advantages:
+Para hacer evidente las propiedades que la función espera, se puede hacer uso de la sintaxis
+desestructuración de es6. Esto representa algunas ventajas:
 
-1. When someone looks at the function signature, it's immediately clear what
-properties are being used.
+1. Cuando alguien mira la función, es evidente las propiedades que estan siendo usadas.
+// TODO: Im here!
 2. Destructuring also clones the specified primitive values of the argument
 object passed into the function. This can help prevent side effects. Note:
 objects and arrays that are destructured from the argument object are NOT
