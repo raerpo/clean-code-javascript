@@ -52,7 +52,7 @@ const yyyymmdstr = moment().format('YYYY/MM/DD');
 ```javascript
 const currentDate = moment().format('YYYY/MM/DD');
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Sér consistente con el nombre de las variables del mismo tipo
 
@@ -67,7 +67,7 @@ getCustomerRecord();
 ```javascript
 getUser();
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Usar nombres que se puedan buscar
 Siempre vamos a leer más código de que escribiremos. Es por esto que es importante
@@ -92,7 +92,7 @@ const MILLISECONDS_IN_A_DAY = 86400000;
 setTimeout(blastOff, MILLISECONDS_IN_A_DAY);
 
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Usar variables aclaratorias
 **Incorrecto:**
@@ -109,7 +109,7 @@ const cityZipCodeRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 const [, city, zipCode] = address.match(cityZipCodeRegex) || [];
 saveCityZipCode(city, zipCode);
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Evitar mapas mentales
 Explícito es mejor que implícito
@@ -140,7 +140,7 @@ locations.forEach((location) => {
   dispatch(location);
 });
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### No agregar contextos innecesarios
 Si el nombre de tu clase/objeto te dice algo, no lo repitas en el nombre de tu variable.
@@ -170,7 +170,7 @@ function paintCar(car) {
   car.color = 'Red';
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Usar argumentos por defecto en vez operadores lógicos o condicionales
 
@@ -190,7 +190,7 @@ function createMicrobrewery(breweryName = 'Hipster Brew Co.') {
 }
 
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ## **Functions**
 ### Function arguments (2 or fewer ideally)
@@ -241,7 +241,7 @@ createMenu({
   cancellable: true
 });
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 
 ### Functions should do one thing
@@ -276,7 +276,7 @@ function isClientActive(client) {
   return clientRecord.isActive();
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Function names should say what they do
 
@@ -301,7 +301,7 @@ function addMonthToDate(month, date) {
 const date = new Date();
 addMonthToDate(1, date);
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Functions should only be one level of abstraction
 When you have more than one level of abstraction your function is usually
@@ -369,7 +369,7 @@ function parseBetterJSAlternative(code) {
   });
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Remove duplicate code
 Do your absolute best to avoid duplicate code. Duplicate code is bad because it
@@ -449,7 +449,7 @@ function showList(employees) {
   });
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Set default objects with Object.assign
 
@@ -495,7 +495,7 @@ function createMenu(config) {
 
 createMenu(menuConfig);
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 
 ### Don't use flags as function parameters
@@ -522,7 +522,7 @@ function createTempFile(name) {
   createFile(`./temp/${name}`);
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Avoid Side Effects (part 1)
 A function produces a side effect if it does anything other than take a value in
@@ -567,7 +567,7 @@ const newName = splitIntoFirstAndLastName(name);
 console.log(name); // 'Ryan McDermott';
 console.log(newName); // ['Ryan', 'McDermott'];
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Avoid Side Effects (part 2)
 In JavaScript, primitives are passed by value and objects/arrays are passed by
@@ -616,7 +616,7 @@ const addItemToCart = (cart, item) => {
 };
 ```
 
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Don't write to global functions
 Polluting globals is a bad practice in JavaScript because you could clash with another
@@ -646,7 +646,7 @@ class SuperArray extends Array {
   }
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Favor functional programming over imperative programming
 JavaScript isn't a functional language in the way that Haskell is, but it has
@@ -702,7 +702,7 @@ const totalOutput = programmerOutput
   .map((programmer) => programmer.linesOfCode)
   .reduce((acc, linesOfCode) => acc + linesOfCode, INITIAL_VALUE);
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Encapsulate conditionals
 
@@ -723,7 +723,7 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
   // ...
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Avoid negative conditionals
 
@@ -748,7 +748,7 @@ if (isDOMNodePresent(node)) {
   // ...
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Avoid conditionals
 This seems like an impossible task. Upon first hearing this, most people say,
@@ -804,7 +804,7 @@ class Cessna extends Airplane {
   }
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Avoid type-checking (part 1)
 JavaScript is untyped, which means your functions can take any type of argument.
@@ -829,7 +829,7 @@ function travelToTexas(vehicle) {
   vehicle.move(this.currentLocation, new Location('texas'));
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Avoid type-checking (part 2)
 If you are working with basic primitive values like strings, integers, and arrays,
@@ -860,7 +860,7 @@ function combine(val1, val2) {
   return val1 + val2;
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Don't over-optimize
 Modern browsers do a lot of optimization under-the-hood at runtime. A lot of
@@ -885,7 +885,7 @@ for (let i = 0; i < list.length; i++) {
   // ...
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Remove dead code
 Dead code is just as bad as duplicate code. There's no reason to keep it in
@@ -916,7 +916,7 @@ function newRequestModule(url) {
 const req = newRequestModule;
 inventoryTracker('apples', req, 'www.inventory-awesome.io');
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ## **Objects and Data Structures**
 ### Use getters and setters
@@ -982,7 +982,7 @@ bankAccount.balance -= shoesPrice;
 let balance = bankAccount.balance;
 
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 
 ### Make objects have private members
@@ -1018,7 +1018,7 @@ console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 delete employee.name;
 console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 
 ## **Classes**
@@ -1077,7 +1077,7 @@ class UserSettings {
   }
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Open/Closed Principle (OCP)
 As stated by Bertrand Meyer, "software entities (classes, modules, functions,
@@ -1164,7 +1164,7 @@ class HttpRequester {
   }
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 
 ### Liskov Substitution Principle (LSP)
@@ -1301,7 +1301,7 @@ function renderLargeShapes(shapes) {
 const shapes = [new Rectangle(), new Rectangle(), new Square()];
 renderLargeShapes(shapes);
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Interface Segregation Principle (ISP)
 JavaScript doesn't have interfaces so this principle doesn't apply as strictly
@@ -1375,7 +1375,7 @@ const $ = new DOMTraverser({
   }
 });
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Dependency Inversion Principle (DIP)
 This principle states two essential things:
@@ -1470,7 +1470,7 @@ class InventoryRequesterV2 {
 const inventoryTracker = new InventoryTracker(['apples', 'bananas'], new InventoryRequesterV2());
 inventoryTracker.requestItems();
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Prefer ES2015/ES6 classes over ES5 plain functions
 It's very difficult to get readable class inheritance, construction, and method
@@ -1545,7 +1545,7 @@ class Human extends Mammal {
   speak() { /* ... */ }
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 
 ### Use method chaining
@@ -1628,7 +1628,7 @@ const car = new Car()
   .setModel('F-150')
   .save();
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Prefer composition over inheritance
 As stated famously in [*Design Patterns*](https://en.wikipedia.org/wiki/Design_Patterns) by the Gang of Four,
@@ -1694,7 +1694,7 @@ class Employee {
   // ...
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ## **Testing**
 Testing is more important than shipping. If you have no tests or an
@@ -1762,7 +1762,7 @@ describe('MakeMomentJSGreatAgain', () => {
   });
 });
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ## **Concurrency**
 ### Use Promises, not callbacks
@@ -1801,7 +1801,7 @@ require('request-promise').get('https://en.wikipedia.org/wiki/Robert_Cecil_Marti
   });
 
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Async/Await are even cleaner than Promises
 Promises are a very clean alternative to callbacks, but ES2017/ES8 brings async and await
@@ -1837,7 +1837,7 @@ async function getCleanCodeArticle() {
   }
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 
 ## **Error Handling**
@@ -1910,7 +1910,7 @@ getdata()
 });
 ```
 
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 
 ## **Formatting**
@@ -1957,7 +1957,7 @@ function restoreDatabase() {}
 class Animal {}
 class Alpaca {}
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 
 ### Function callers and callees should be close
@@ -2043,7 +2043,7 @@ const review = new PerformanceReview(employee);
 review.perfReview();
 ```
 
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ## **Comments**
 ### Only comment things that have business logic complexity.
@@ -2087,7 +2087,7 @@ function hashIt(data) {
 }
 
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Don't leave commented out code in your codebase
 Version control exists for a reason. Leave old code in your history.
@@ -2104,7 +2104,7 @@ doStuff();
 ```javascript
 doStuff();
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Don't have journal comments
 Remember, use version control! There's no need for dead code, commented code,
@@ -2129,7 +2129,7 @@ function combine(a, b) {
   return a + b;
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ### Avoid positional markers
 They usually just add noise. Let the functions and variable names along with the
@@ -2164,7 +2164,7 @@ const actions = function() {
   // ...
 };
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
 
 ## Translation
 
@@ -2177,4 +2177,4 @@ This is also available in other languages:
   - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [BoryaMogila/clean-code-javascript-ru/](https://github.com/BoryaMogila/clean-code-javascript-ru/)
 
 
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#indice)**
