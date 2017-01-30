@@ -210,23 +210,21 @@ innecesario, se puede usar un objeto si se encuentra la necesidad de muchos argu
 Para hacer evidente las propiedades que la función espera, se puede hacer uso de la sintaxis
 desestructuración de es6. Esto representa algunas ventajas:
 
-1. Cuando alguien mira la función, es evidente las propiedades que estan siendo usadas.
-// TODO: Im here!
-2. Destructuring also clones the specified primitive values of the argument
-object passed into the function. This can help prevent side effects. Note:
-objects and arrays that are destructured from the argument object are NOT
-cloned.
-3. Linters can warn you about unused properties, which would be impossible
-without destructuring.
+1. Cuando alguien observe la función, debe ser evidente las propiedades que estan siendo usadas.
+2. La desestructuración tambien clona los valores primitivos de los argumentos que se le pasan a la función. 
+Esto ayuda a prevenir efectos secundarios. Nota: Los objetos y arreglos que son desestructurados desde el 
+objeto que se pasa como argumento NO son clonados.
+3. Los linters nos pueden advertir sobre propiedades que no estan siendo usadas, lo cual seria imposible
+sin la desestructuración.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 function createMenu(title, body, buttonText, cancellable) {
   // ...
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function createMenu({ title, body, buttonText, cancellable }) {
   // ...
@@ -242,14 +240,14 @@ createMenu({
 **[⬆ volver arriba](#indice)**
 
 
-### Functions should do one thing
-This is by far the most important rule in software engineering. When functions
-do more than one thing, they are harder to compose, test, and reason about.
-When you can isolate a function to just one action, they can be refactored
-easily and your code will read much cleaner. If you take nothing else away from
-this guide other than this, you'll be ahead of many developers.
+### Las funciones solo deben realizar una cosa
+Esta es por mucho las regla más importante en ingeniería de software. Cuando 
+las funciones hacen más de una cosa, son dificiles de crear, probar y entender.
+Cuando puedes limitar un función a solamente realizar una acción, esta se puede 
+refactorizar mucho más fácil y el código va a ser mucho más claro. Si esta es la 
+única sugerencia que se obtiene de esta guia, ya estarás por delante de muchos desarroladores.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 function emailClients(clients) {
   clients.forEach((client) => {
@@ -261,7 +259,7 @@ function emailClients(clients) {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function emailClients(clients) {
   clients
@@ -276,9 +274,9 @@ function isClientActive(client) {
 ```
 **[⬆ volver arriba](#indice)**
 
-### Function names should say what they do
+### El nombre de una función debe indicar lo que esta realiza.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 function addToDate(date, month) {
   // ...
@@ -286,11 +284,11 @@ function addToDate(date, month) {
 
 const date = new Date();
 
-// It's hard to to tell from the function name what is added
+// Es difícil saber por el nombre de la función que es lo que se está agregando
 addToDate(date, 1);
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function addMonthToDate(month, date) {
   // ...
@@ -301,12 +299,12 @@ addMonthToDate(1, date);
 ```
 **[⬆ volver arriba](#indice)**
 
-### Functions should only be one level of abstraction
-When you have more than one level of abstraction your function is usually
-doing too much. Splitting up functions leads to reusability and easier
-testing.
+### Las funciones deben tener un solo nivel de abstracción
+Cuando se tiene más de un nivel de abstracción normalmente significa que la función 
+esta haciendo demasiadas cosas. Dividir en más funciones facilita la reusabilidad y la 
+facilidad para realizar pruebas.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 function parseBetterJSAlternative(code) {
   const REGEXES = [
@@ -332,7 +330,7 @@ function parseBetterJSAlternative(code) {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function tokenize(code) {
   const REGEXES = [
@@ -369,29 +367,29 @@ function parseBetterJSAlternative(code) {
 ```
 **[⬆ volver arriba](#indice)**
 
-### Remove duplicate code
-Do your absolute best to avoid duplicate code. Duplicate code is bad because it
-means that there's more than one place to alter something if you need to change
-some logic.
+### Eliminar código repetido
+Es necesario hacer lo mejor posible para evitar el código repetido. El código repetido 
+es malo ya que significa que existe más de un lugar para modificar si se necesita realizar 
+un cambio en la lógica.
 
-Imagine if you run a restaurant and you keep track of your inventory: all your
-tomatoes, onions, garlic, spices, etc. If you have multiple lists that
-you keep this on, then all have to be updated when you serve a dish with
-tomatoes in them. If you only have one list, there's only one place to update!
+Imaginemos que tenemos un restaurante y llevamos el control de nuestro inventario: todos los 
+tomates, cebollas, ajos, especias, etc. Si tenemos multiples listas que debemos tener actualizadas, entonces 
+todas deben ser actualizadas cuando se sirve un plato que contiene tomates. Si solo se tiene una lista, solo 
+se debe hacer una actualización.
 
-Oftentimes you have duplicate code because you have two or more slightly
-different things, that share a lot in common, but their differences force you
-to have two or more separate functions that do much of the same things. Removing
-duplicate code means creating an abstraction that can handle this set of
-different things with just one function/module/class.
+Muchas veces nos encontramos con código duplicado al tener cosas ligeramente diferentes,
+que comparten mucho en común, pero sus diferencias nos obligan a tener dos o más funciones separadas
+que hacen prácticamente las mismas cosas. Remover código duplicado implica crear abstracciones que puedan 
+manejar estas pequeñas diferencias usando solamente un función/módulo/clase.
 
-Getting the abstraction right is critical, that's why you should follow the
-SOLID principles laid out in the *Classes* section. Bad abstractions can be
-worse than duplicate code, so be careful! Having said this, if you can make
-a good abstraction, do it! Don't repeat yourself, otherwise you'll find yourself
-updating multiple places anytime you want to change one thing.
+Encontrar la abstracción correcta es vital, es por esto que debemos seguir los SOLIDOS principios 
+que se encuentran en la sección *Clases*. Abstracciones incorrectas pueden ser peores que código 
+duplicado, ¡asi que debemos ser cuidadosos! Habiendo dicho esto, si es posible realizar una buena 
+abstracción, debemos hacerla para no repetirnos nosotros mismos, de lo contrario nos encontraremos
+actualizando en múltiplies partes cada vez que deseamos realizar un cambio.
 
-**Bad:**
+
+**Incorrecto:**
 ```javascript
 function showDeveloperList(developers) {
   developers.forEach((developer) => {
@@ -424,7 +422,7 @@ function showManagerList(managers) {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function showList(employees) {
   employees.forEach((employee) => {
@@ -449,9 +447,9 @@ function showList(employees) {
 ```
 **[⬆ volver arriba](#indice)**
 
-### Set default objects with Object.assign
+### Configura objetos por defecto con Object.assign
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 const menuConfig = {
   title: null,
@@ -470,7 +468,7 @@ function createMenu(config) {
 createMenu(menuConfig);
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 const menuConfig = {
   title: 'Order',
@@ -487,7 +485,7 @@ function createMenu(config) {
     cancellable: true
   }, config);
 
-  // config now equals: {title: "Order", body: "Bar", buttonText: "Send", cancellable: true}
+  // config ahora es: {title: "Order", body: "Bar", buttonText: "Send", cancellable: true}
   // ...
 }
 
@@ -496,10 +494,11 @@ createMenu(menuConfig);
 **[⬆ volver arriba](#indice)**
 
 
-### Don't use flags as function parameters
-Flags tell your user that this function does more than one thing. Functions should do one thing. Split out your functions if they are following different code paths based on a boolean.
+### No usar flags como parametros de una función.
+Los flags (ó bannderas) indican que una función realiza más de una cosa. La funciones solo deberian 
+hacer una cosa. Debemos separar las funciones si estas toman diferentes caminos basandose en un booleano.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 function createFile(name, temp) {
   if (temp) {
@@ -510,7 +509,7 @@ function createFile(name, temp) {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function createFile(name) {
   fs.create(name);
@@ -522,26 +521,26 @@ function createTempFile(name) {
 ```
 **[⬆ volver arriba](#indice)**
 
-### Avoid Side Effects (part 1)
-A function produces a side effect if it does anything other than take a value in
-and return another value or values. A side effect could be writing to a file,
-modifying some global variable, or accidentally wiring all your money to a
-stranger.
+### Evitar efectos colaterales (parte 1)
+Una función produce un efecto colateral si esta hace algo diferente de recibir un 
+valor de entrada y devolver uno o más valores de salida. Un efecto colateral podria ser 
+escribir en un archivo, modificar una variable global, o accidentalmente enviar tu dinero a 
+un desconocido.
 
-Now, you do need to have side effects in a program on occasion. Like the previous
-example, you might need to write to a file. What you want to do is to
-centralize where you are doing this. Don't have several functions and classes
-that write to a particular file. Have one service that does it. One and only one.
+Ahora, a veces es necesario tener efectos colaterales en un programa. Como en el ejemplo anterior,
+es posible que necesites escribir en un archivo. Lo que se debe hacer es centralizar donde se va 
+a realizar esto. No se debe tener varias funciones o clases que escriben en un archivo en particular.
+Solo debe haber un servicio que lo haga y solo uno.
 
-The main point is to avoid common pitfalls like sharing state between objects
-without any structure, using mutable data types that can be written to by anything,
-and not centralizing where your side effects occur. If you can do this, you will
-be happier than the vast majority of other programmers.
+El punto central es evitar inconvenientes comunes como compartir estado entre objetos 
+sin ninguna estrutura, usar tipos de datos mutables que pueden ser escritos por cualquier cosa,
+y no centralizar donde los efectos colaterales ocurren. Si esto se puede lograr, te hará ser más 
+feliz que la gran mayoria de programadores.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
-// Global variable referenced by following function.
-// If we had another function that used this name, now it'd be an array and it could break it.
+// Variable global referenciada por la función que le precede.
+// Si se tiene otra función que use la variable name, esta seria un arreglo y podria generar un error
 let name = 'Ryan McDermott';
 
 function splitIntoFirstAndLastName() {
@@ -553,7 +552,7 @@ splitIntoFirstAndLastName();
 console.log(name); // ['Ryan', 'McDermott'];
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function splitIntoFirstAndLastName(name) {
   return name.split(' ');
@@ -600,14 +599,14 @@ this isn't a big issue in practice because there are
 this kind of programming approach to be fast and not as memory intensive as
 it would be for you to manually clone objects and arrays.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 const addItemToCart = (cart, item) => {
   cart.push({ item, date: Date.now() });
 };
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 const addItemToCart = (cart, item) => {
   return [...cart, { item, date : Date.now() }];
@@ -627,7 +626,7 @@ to do the same thing. What if that other library was just using `diff` to find
 the difference between the first and last elements of an array? This is why it
 would be much better to just use ES2015/ES6 classes and simply extend the `Array` global.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 Array.prototype.diff = function diff(comparisonArray) {
   const hash = new Set(comparisonArray);
@@ -635,7 +634,7 @@ Array.prototype.diff = function diff(comparisonArray) {
 };
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 class SuperArray extends Array {
   diff(comparisonArray) {
@@ -651,7 +650,7 @@ JavaScript isn't a functional language in the way that Haskell is, but it has
 a functional flavor to it. Functional languages are cleaner and easier to test.
 Favor this style of programming when you can.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 const programmerOutput = [
   {
@@ -676,7 +675,7 @@ for (let i = 0; i < programmerOutput.length; i++) {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 const programmerOutput = [
   {
@@ -704,14 +703,14 @@ const totalOutput = programmerOutput
 
 ### Encapsulate conditionals
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 if (fsm.state === 'fetching' && isEmpty(listNode)) {
   // ...
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function shouldShowSpinner(fsm, listNode) {
   return fsm.state === 'fetching' && isEmpty(listNode);
@@ -725,7 +724,7 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
 
 ### Avoid negative conditionals
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 function isDOMNodeNotPresent(node) {
   // ...
@@ -736,7 +735,7 @@ if (!isDOMNodeNotPresent(node)) {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function isDOMNodePresent(node) {
   // ...
@@ -758,7 +757,7 @@ one thing. When you have classes and functions that have `if` statements, you
 are telling your user that your function does more than one thing. Remember,
 just do one thing.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 class Airplane {
   // ...
@@ -775,7 +774,7 @@ class Airplane {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 class Airplane {
   // ...
@@ -810,7 +809,7 @@ Sometimes you are bitten by this freedom and it becomes tempting to do
 type-checking in your functions. There are many ways to avoid having to do this.
 The first thing to consider is consistent APIs.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 function travelToTexas(vehicle) {
   if (vehicle instanceof Bicycle) {
@@ -821,7 +820,7 @@ function travelToTexas(vehicle) {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function travelToTexas(vehicle) {
   vehicle.move(this.currentLocation, new Location('texas'));
@@ -840,7 +839,7 @@ doesn't make up for the lost readability. Keep your JavaScript clean, write
 good tests, and have good code reviews. Otherwise, do all of that but with
 TypeScript (which, like I said, is a great alternative!).
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 function combine(val1, val2) {
   if (typeof val1 === 'number' && typeof val2 === 'number' ||
@@ -852,7 +851,7 @@ function combine(val1, val2) {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function combine(val1, val2) {
   return val1 + val2;
@@ -867,7 +866,7 @@ resources](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers)
 for seeing where optimization is lacking. Target those in the meantime, until
 they are fixed if they can be.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 
 // On old browsers, each iteration with uncached `list.length` would be costly
@@ -877,7 +876,7 @@ for (let i = 0, len = list.length; i < len; i++) {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 for (let i = 0; i < list.length; i++) {
   // ...
@@ -890,7 +889,7 @@ Dead code is just as bad as duplicate code. There's no reason to keep it in
 your codebase. If it's not being called, get rid of it! It will still be safe
 in your version history if you still need it.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 function oldRequestModule(url) {
   // ...
@@ -905,7 +904,7 @@ inventoryTracker('apples', req, 'www.inventory-awesome.io');
 
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function newRequestModule(url) {
   // ...
@@ -934,7 +933,7 @@ to look up and change every accessor in your codebase.
 server.
 
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 class BankAccount {
   constructor() {
@@ -948,7 +947,7 @@ const bankAccount = new BankAccount();
 bankAccount.balance -= 100;
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 class BankAccount {
   constructor(balance = 1000) {
@@ -986,7 +985,7 @@ let balance = bankAccount.balance;
 ### Make objects have private members
 This can be accomplished through closures (for ES5 and below).
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 
 const Employee = function(name) {
@@ -1003,7 +1002,7 @@ delete employee.name;
 console.log(`Employee name: ${employee.getName()}`); // Employee name: undefined
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 const Employee = function (name) {
   this.getName = function getName() {
@@ -1030,7 +1029,7 @@ It's important because if too much functionality is in one class and you modify 
 it can be difficult to understand how that will affect other dependent modules in
 your codebase.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 class UserSettings {
   constructor(user) {
@@ -1049,7 +1048,7 @@ class UserSettings {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 class UserAuth {
   constructor(user) {
@@ -1083,7 +1082,7 @@ etc.) should be open for extension, but closed for modification." What does that
 mean though? This principle basically states that you should allow users to
 add new functionalities without changing existing code.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 class AjaxAdapter extends Adapter {
   constructor() {
@@ -1126,7 +1125,7 @@ function makeHttpCall(url) {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 class AjaxAdapter extends Adapter {
   constructor() {
@@ -1179,7 +1178,7 @@ classic Square-Rectangle example. Mathematically, a square is a rectangle, but
 if you model it using the "is-a" relationship via inheritance, you quickly
 get into trouble.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 class Rectangle {
   constructor() {
@@ -1233,7 +1232,7 @@ const rectangles = [new Rectangle(), new Rectangle(), new Square()];
 renderLargeRectangles(rectangles);
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 class Shape {
   setColor(color) {
@@ -1315,7 +1314,7 @@ classes that require large settings objects. Not requiring clients to setup
 huge amounts of options is beneficial, because most of the time they won't need
 all of the settings. Making them optional helps prevent having a "fat interface".
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 class DOMTraverser {
   constructor(settings) {
@@ -1341,7 +1340,7 @@ const $ = new DOMTraverser({
 
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 class DOMTraverser {
   constructor(settings) {
@@ -1396,7 +1395,7 @@ and properties that an object/class exposes to another object/class. In the
 example below, the implicit contract is that any Request module for an
 `InventoryTracker` will have a `requestItems` method.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 class InventoryRequester {
   constructor() {
@@ -1428,7 +1427,7 @@ const inventoryTracker = new InventoryTracker(['apples', 'bananas']);
 inventoryTracker.requestItems();
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 class InventoryTracker {
   constructor(items, requester) {
@@ -1476,7 +1475,7 @@ definitions for classical ES5 classes. If you need inheritance (and be aware
 that you might not), then prefer classes. However, prefer small functions over
 classes until you find yourself needing larger and more complex objects.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 const Animal = function(age) {
   if (!(this instanceof Animal)) {
@@ -1515,7 +1514,7 @@ Human.prototype.constructor = Human;
 Human.prototype.speak = function speak() {};
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 class Animal {
   constructor(age) {
@@ -1553,7 +1552,7 @@ For that reason, I say, use method chaining and take a look at how clean your co
 will be. In your class functions, simply return `this` at the end of every function,
 and you can chain further class methods onto it.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 class Car {
   constructor() {
@@ -1586,7 +1585,7 @@ car.setModel('F-150');
 car.save();
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 class Car {
   constructor() {
@@ -1646,7 +1645,7 @@ relationship (Human->Animal vs. User->UserDetails).
 3. You want to make global changes to derived classes by changing a base class.
 (Change the caloric expenditure of all animals when they move).
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 class Employee {
   constructor(name, email) {
@@ -1669,7 +1668,7 @@ class EmployeeTaxData extends Employee {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 class EmployeeTaxData {
   constructor(ssn, salary) {
@@ -1713,7 +1712,7 @@ or refactoring an existing one.
 
 ### Single concept per test
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 const assert = require('assert');
 
@@ -1736,7 +1735,7 @@ describe('MakeMomentJSGreatAgain', () => {
 });
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 const assert = require('assert');
 
@@ -1767,7 +1766,7 @@ describe('MakeMomentJSGreatAgain', () => {
 Callbacks aren't clean, and they cause excessive amounts of nesting. With ES2015/ES6,
 Promises are a built-in global type. Use them!
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 require('request').get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin', (requestErr, response) => {
   if (requestErr) {
@@ -1785,7 +1784,7 @@ require('request').get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin', (req
 
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 require('request-promise').get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
   .then((response) => {
@@ -1808,7 +1807,7 @@ in an `async` keyword, and then you can write your logic imperatively without
 a `then` chain of functions. Use this if you can take advantage of ES2017/ES8 features
 today!
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 require('request-promise').get('https://en.wikipedia.org/wiki/Robert_Cecil_Martin')
   .then((response) => {
@@ -1823,7 +1822,7 @@ require('request-promise').get('https://en.wikipedia.org/wiki/Robert_Cecil_Marti
 
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 async function getCleanCodeArticle() {
   try {
@@ -1852,7 +1851,7 @@ to the console. If you wrap any bit of code in a `try/catch` it means you
 think an error may occur there and therefore you should have a plan,
 or create a code path, for when it occurs.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 try {
   functionThatMightThrow();
@@ -1861,7 +1860,7 @@ try {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 try {
   functionThatMightThrow();
@@ -1880,7 +1879,7 @@ try {
 For the same reason you shouldn't ignore caught errors
 from `try/catch`.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 getdata()
 .then((data) => {
@@ -1891,7 +1890,7 @@ getdata()
 });
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 getdata()
 .then((data) => {
@@ -1926,7 +1925,7 @@ JavaScript is untyped, so capitalization tells you a lot about your variables,
 functions, etc. These rules are subjective, so your team can choose whatever
 they want. The point is, no matter what you all choose, just be consistent.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 const DAYS_IN_WEEK = 7;
 const daysInMonth = 30;
@@ -1941,7 +1940,7 @@ class animal {}
 class Alpaca {}
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 const DAYS_IN_WEEK = 7;
 const DAYS_IN_MONTH = 30;
@@ -1963,7 +1962,7 @@ If a function calls another, keep those functions vertically close in the source
 file. Ideally, keep the caller right above the callee. We tend to read code from
 top-to-bottom, like a newspaper. Because of this, make your code read that way.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 class PerformanceReview {
   constructor(employee) {
@@ -2002,7 +2001,7 @@ const review = new PerformanceReview(user);
 review.perfReview();
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 class PerformanceReview {
   constructor(employee) {
@@ -2047,7 +2046,7 @@ review.perfReview();
 ### Only comment things that have business logic complexity.
 Comments are an apology, not a requirement. Good code *mostly* documents itself.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 function hashIt(data) {
   // The hash
@@ -2068,7 +2067,7 @@ function hashIt(data) {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 
 function hashIt(data) {
@@ -2090,7 +2089,7 @@ function hashIt(data) {
 ### Don't leave commented out code in your codebase
 Version control exists for a reason. Leave old code in your history.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 doStuff();
 // doOtherStuff();
@@ -2098,7 +2097,7 @@ doStuff();
 // doSoMuchStuff();
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 doStuff();
 ```
@@ -2108,7 +2107,7 @@ doStuff();
 Remember, use version control! There's no need for dead code, commented code,
 and especially journal comments. Use `git log` to get history!
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 /**
  * 2016-12-20: Removed monads, didn't understand them (RM)
@@ -2121,7 +2120,7 @@ function combine(a, b) {
 }
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 function combine(a, b) {
   return a + b;
@@ -2133,7 +2132,7 @@ function combine(a, b) {
 They usually just add noise. Let the functions and variable names along with the
 proper indentation and formatting give the visual structure to your code.
 
-**Bad:**
+**Incorrecto:**
 ```javascript
 ////////////////////////////////////////////////////////////////////////////////
 // Scope Model Instantiation
@@ -2151,7 +2150,7 @@ const actions = function() {
 };
 ```
 
-**Good:**
+**Correcto:**
 ```javascript
 $scope.model = {
   menu: 'foo',
